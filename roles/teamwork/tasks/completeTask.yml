@@ -1,0 +1,12 @@
+#https://developer.teamwork.com/todolistitems#mark_a_task_compl
+- name: Complete Task
+  uri:
+    url: "{{ teamwork_projects_url }}/tasks/{{ taskId }}/complete.json"
+    method: PUT
+
+    headers:
+      Content-Type: "application/json"
+      Authorization: "Basic {{ teamwork_projects_api_key | b64encode }}"
+
+    status_code: 200
+    body_format: json

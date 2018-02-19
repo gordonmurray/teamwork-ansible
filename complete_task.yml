@@ -1,0 +1,16 @@
+- name: Complete a Task with a comment
+  gather_facts: false
+
+  vars_files:
+    - roles/teamwork/vars/main.yml
+
+  vars:
+    taskId: 12345
+    comment: "I finished this Task"
+
+  hosts:
+  - localhost
+
+  tasks:
+  - import_tasks: roles/teamwork/tasks/commentOnTask.yml
+  - import_tasks: roles/teamwork/tasks/completeTask.yml

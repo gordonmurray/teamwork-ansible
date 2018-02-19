@@ -1,0 +1,16 @@
+#https://developer.teamwork.com/comments#creating_a_commen
+- name: Comment on Task
+  uri:
+    url: "{{ teamwork_projects_url }}/tasks/{{ taskId }}/comments.json"
+    method: POST
+
+    headers:
+      Content-Type: "application/json"
+      Authorization: "Basic {{ teamwork_projects_api_key | b64encode }}"
+
+    body:
+      comment:
+        body: "{{ comment }}"
+
+    status_code: 201
+    body_format: json
