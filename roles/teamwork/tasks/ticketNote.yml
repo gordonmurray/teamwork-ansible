@@ -1,0 +1,13 @@
+- name: Add a Note
+  uri:
+    url: "{{ teamwork_projects_url }}/desk/v1/tickets/{{ ticketId }}.json"
+    method: POST
+
+    headers:
+      Content-Type: "application/x-www-form-urlencoded"
+      Authorization: "Basic {{ teamwork_desk_api_key | b64encode }}"
+
+    body: "isDraft={{ isDraft }}&body={{ body }}&type={{ type }}&status={{ status }}&assignedTo={{ assignedTo }}&editMethod={{ editMethod }}"
+
+    status_code: 200
+    body_format: raw

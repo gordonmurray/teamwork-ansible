@@ -1,0 +1,20 @@
+- name: Add a Note to a Ticket in Teamwork Desk
+  gather_facts: false
+
+  vars_files:
+    - roles/teamwork/vars/main.yml
+
+  vars:
+    ticketId: 3573
+    isDraft: false
+    body: Adding a Note using Ansible
+    type: note
+    status: active
+    assignedTo: -1
+    editMethod: markdown
+
+  hosts:
+  - localhost
+
+  tasks:
+  - import_tasks: roles/teamwork/tasks/ticketNote.yml
