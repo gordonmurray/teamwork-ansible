@@ -1,0 +1,16 @@
+- name: Create Project
+  uri:
+    url: "{{ teamwork_projects_url }}/projects.json"
+    method: POST
+
+    headers:
+      Content-Type: "application/json"
+      Authorization: "Basic {{ teamwork_projects_api_key | b64encode }}"
+
+    body:
+      project:
+        name: "{{ project_name }}"
+        description: "{{ project_description }}"
+
+    status_code: 200
+    body_format: json

@@ -1,0 +1,16 @@
+- name: Create a new Task
+  gather_facts: false
+
+  vars_files:
+    - roles/teamwork/vars/main.yml
+
+  vars:
+    tasklist_id: 12345
+    task_name: "This is a new Task"
+    task_description: "Task created using Ansible"
+
+  hosts:
+  - localhost
+
+  tasks:
+  - import_tasks: roles/teamwork/tasks/createTask.yml

@@ -1,0 +1,15 @@
+- name: Create a new Project
+  gather_facts: false
+
+  vars_files:
+    - roles/teamwork/vars/main.yml
+
+  vars:
+    project_name: "This is a new Project"
+    project_description: "Project created using Ansible"
+
+  hosts:
+  - localhost
+
+  tasks:
+  - import_tasks: roles/teamwork/tasks/createProject.yml
