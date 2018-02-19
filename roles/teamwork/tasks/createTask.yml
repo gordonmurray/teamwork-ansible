@@ -1,0 +1,16 @@
+- name: Create Task
+  uri:
+    url: "{{ teamwork_projects_url }}/tasklists/{{ tasklist_id }}/tasks.json"
+    method: POST
+
+    headers:
+      Content-Type: "application/json"
+      Authorization: "Basic {{ teamwork_projects_api_key | b64encode }}"
+
+    body:
+      todo-item:
+        content: "{{ task_name }}"
+        description: "{{ task_description }}"
+
+    status_code: 201
+    body_format: json
